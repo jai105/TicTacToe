@@ -1,60 +1,60 @@
-const player1 = "x"
-const player2 = "o"
-
-
-//**to click on squares
-var squares = document.querySelectorAll(".item");
-
-var clickBox = function() {
-    document.getElementsByClassName(".container");
-    console.log("test");
-
-};
-
-for (var i = 0; i < squares.length; i++) {
-    squares[i].addEventListener('click', clickBox);
-}
 //*****************************************************************************************
 //*******************************************************************************************
+//**** PLAYER INFO****
 
-var button = document.querySelector(".button");
 
-var newGame = function (){
-    document.getElementsByClassName(".button")
+const playerDisplay = document.querySelector('#player');
+let currentPlayer = "playerX";
+//*****************************************************************************************
+//*******************************************************************************************
+//**** SQUARE CLICKS ON GRID FOR PLACING X'S AND O'S ****
+
+var squares = document.querySelectorAll(".item");
+
+squares.forEach(square =>{
+    square.addEventListener('click', clickOutcome)
+})
+
+function clickOutcome(e) {
+    const squareArray = Array.from(squares)
+    const index = squareArray.indexOf(e.target)
+    playerDisplay.innerHTML = currentPlayer
 }
 
 
+if(currentPlayer === 'playerX'){
+    currentPlayer = 'player0'
+}else
+    currentPlayer = 'playerX'
+
+
+
 //
-// document.querySelector(".button").addEventListener("click", newGame);
+// var clickBox = function(e) {
+//     document.getElementsByClassName(".container");
+//     console.log("test");
 //
-// function newGame() {
-//     document.querySelector(".button").innerHTML = "Hello World";
+// };
+//
+// for (var i = 0; i < squares.length; i++) {
+//     squares[i].addEventListener('click', clickBox);
 // }
+//*****************************************************************************************
+//*******************************************************************************************
+//**** GAME RULES*********
 
 
+const winningCombos = [
 
-
-
-
-
-//
-// var newGame = function () {
-//     document.querySelector(".button").onclick = function (event) {
-//         //button.addEventListener('click');
-//         alert("New Game");
-//     }
-// }
-// const winningCombos = [
-//
-//         [0,1,2]
-//         [3,4,5]
-//         [6,7,8]
-//         [0,4,8]
-//         [2,4,6]
-//         [0,3,6]
-//         [1,4,7]
-//         [2,5,8]
-// ]
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+        [0,4,8],
+        [2,4,6],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8]
+]
 
 //
 // document.addEventListener('DOMContentLoaded',() => {
@@ -80,5 +80,28 @@ var newGame = function (){
 // } else {
 //     currentPlayer = 'playerX'
 // }
+
+//*****************************************************************************************
+//*******************************************************************************************
+//**** BUTTON TO RESET GAME****
 //
+// var button = document.querySelector(".button");
 //
+// var newGame = function (){
+//     document.getElementsByClassName(".button")
+// }
+//
+// document.querySelector(".button").addEventListener("click", newGame);
+//
+// function newGame() {
+//     document.querySelector(".button").innerHTML = "Hello World";
+// }
+//
+// var newGame = function () {
+//     document.querySelector(".button").onclick = function (event) {
+//         //button.addEventListener('click');
+//         alert("New Game");
+//     }
+// }
+
+
