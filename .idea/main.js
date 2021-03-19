@@ -1,10 +1,10 @@
-console.log("loaded");
 
-const moves = new Array(9)
 
-const squares = document.querySelectorAll(".item");
-squares.forEach(square => console.log(square));
-console.log(squares);
+const moves = [0,1,2,3,4,5,6,7,8];
+
+const movess = document.querySelectorAll(".item");
+movess.forEach(moves => console.log(moves));
+console.log(movess);
 //const winMessageDiv = document.querySelector('.win-message')
 const board = document.querySelector('.container')
 let turnCount = 0
@@ -12,68 +12,49 @@ let turn = 'X'
 
 
 function checkForWin() {
-    if (moves[0] === moves[1] && moves[1] === moves[2]) {
+
+    // if (moves[0] === moves[1] && moves[1] === moves[2]) {
+    //      alert(turn + "Won the game!");
+    // } else {
+    //     console.log('no winner yet')
+    // }
+
+    if ((moves[0] === "X" && moves[1] === "X" && moves[2] === "X")||(moves[0] === "O" && moves[1] === "O" && moves[2] === "O")) {
         alert(turn + "Won the game!");
-    } else {
-        console.log('no winner yet')
+    }
+    else if ((moves[3] === "X" && moves[4] === "X" && moves[5] === "X")||(moves[3] === "O" && moves[4] === "O" && moves[5] === "O")) {
+        alert(turn + "Won the game!");
+    }
+    else if ((moves[6] === "X" && moves[7] === "X" && moves[8] === "X")||(moves[6] === "O" && moves[7] === "O" && moves[8] === "O")) {
+        alert(turn + "Won the game!");
     }
 
-    if (squares[0] === squares[1] && squares[0] === squares[2]) {
-        if (square[0] === "X" || square[0] === "O") {
-            alert(turn + "Won the game!");
-        }
-    } else if (squares[3] === squares[4] && squares[3] === squares[5]) {
-        if (square[0] === "X" || square[0] === "O") {
-            alert(turn + "Won the game!");
-        }
-    } else if (squares[6] === squares[7] && squares[6] === squares[8]) {
-        if (square[0] === "X" || square[0] === "O") {
-            alert(turn + "Won the game!");
-        }
-    } else if (squares[0] === squares[3] && squares[0] === squares[6]) {
-        if (square[0] === "X" || square[0] === "O") {
-            alert(turn + "Won the game!");
-        }
-    } else if (squares[1] === squares[4] && squares[1] === squares[7]) {
-        if (square[0] === "X" || square[0] === "O") {
-            alert(turn + "Won the game!");
-        }
-    } else if (squares[2] === squares[5] && squares[2] === squares[8]) {
-        if (square[0] === "X" || square[0] === "O") {
-            alert(turn + "Won the game!");
-        }
-    } else if (squares[0] === squares[4] && squares[0] === squares[8]) {
-        if (square[0] === "X" || square[0] === "O") {
-            alert(turn + "Won the game!");
-        }
-    } else if (squares[2] === squares[4] && squares[2] === squares[6]) {
-        if (square[0] === "X" || square[0] === "O") {
-            if (square[0] === "X" || square[0] === "O") {
-                alert(turn + "Won the game!");
-            }
-        } else {
+    else if ((moves[0] === "X" && moves[3] === "X" && moves[6] === "X")||(moves[0] === "O" && moves[3] === "O" && moves[6] === "O")) {
+        alert(turn + "Won the game!");
+    }
+    else if ((moves[1] === "X" && moves[4] === "X" && moves[7] === "X")||(moves[1] === "O" && moves[4] === "O" && moves[7] === "O")) {
+        alert(turn + "Won the game!");
+    }
+    else if ((moves[2] === "X" && moves[5] === "X" && moves[8] === "X")||(moves[2] === "O" && moves[5] === "O" && moves[8] === "O")) {
+        alert(turn + "Won the game!");
+    }
+    else if ((moves[0] === "X" && moves[4] === "X" && moves[8] === "X")||(moves[0] === "O" && moves[4] === "O" && moves[8] === "O")) {
+        alert(turn + "Won the game!");
+    }
+    else if ((moves[2] === "X" && moves[4] === "X" && moves[6] === "X")||(moves[2] === "O" && moves[4] === "O" && moves[6] === "O")) {
+        alert(turn + "Won the game!");
+    }
+
+         else {
             console.log('no winner yet')
-        }
     }
 }
-// function checkForWin() {
-//     if (moves[0] === moves[1] && moves[1] === moves[2]) {
-//         removeClickEventCallback()
-//         squares[0].classList.add('blink')
-//         squares[1].classList.add('blink')
-//         squares[2].classList.add('blink')
-//
-//        // winMessageDiv.innerHTML = `winner in the first row ${turn}`;
-//     } else {
-//         console.log('no winner yet')
-//     }
-// }
 
     // function removeClickEventCallback() {
     //     // board.classList.remove('rotate')
-    //     squares.forEach(square => {
-    //         (square.innerText !== turn) ? square.innerText = '' : square.classList.add('blink')
-    //         square.removeEventListener('click', handleClickEventCallback)
+    //     movess.forEach(moves => {
+    //         (moves.innerText !== turn) ? moves.innerText = '' : moves.classList.add('blink')
+    //         moves.removeEventListener('click', handleClickEventCallback)
     //     })
     // }
 
@@ -81,17 +62,20 @@ function checkForWin() {
         if (turnCount < 1) {
             board.classList.add('rotate')
         }
-        squares[event.target.id] = turn
+        moves[event.target.id] = turn
+        console.log(moves)
+
         checkForWin()
         event.target.innerText = turn
         turn = (turnCount % 2 === 0) ? "O" : "X";
         turnCount++
     }
 
-    squares.forEach((square, index) => {
-        console.log(square);
-        square.setAttribute('id', `${index}`)
-        square.addEventListener('click', handleClickEventCallback, {once: true})
+    movess.forEach((moves, index) => {
+        console.log(moves);
+        moves.setAttribute('id', `${index}`)
+        moves.addEventListener('click', handleClickEventCallback, {once: true})
+
     })
 
 
@@ -106,26 +90,26 @@ function checkForWin() {
 //
 // //*****************************************************************************************
 // //*******************************************************************************************
-// //**** SQUARE CLICKS ON GRID FOR PLACING X'S AND O'S ****
+// //**** moves CLICKS ON GRID FOR PLACING X'S AND O'S ****
 //
-// const squares = document.querySelectorAll(".item");
+// const movess = document.querySelectorAll(".item");
 //
-// squares.forEach(square =>{
-//     square.addEventListener('click', clickCurrentPlayer)
+// movess.forEach(moves =>{
+//     moves.addEventListener('click', clickCurrentPlayer)
 // })
 //
 // function clickCurrentPlayer(e) {
-//     const squareArray = Array.from(squares);
-//     const index = squareArray.indexOf(e.target);
+//     const movesArray = Array.from(movess);
+//     const index = movesArray.indexOf(e.target);
 //     playerTurn.innerHTML = currentPlayer;
 //
 // //
 // //     if (currentPlayer === "playerX") {
-// //         squares[index].squareArray.add('playerX');
+// //         movess[index].movesArray.add('playerX');
 // //         currentPlayer = "playerO";
 // //
 // //     } else {
-// //         squares[index].squareArray.add("playerO")
+// //         movess[index].movesArray.add("playerO")
 // //         currentPlayer = "playerX";
 // //     }
 // // }
@@ -138,8 +122,8 @@ function checkForWin() {
 // //
 // // };
 // //
-// // for (var i = 0; i < squares.length; i++) {
-// //     squares[i].addEventListener('click', clickBox);
+// // for (var i = 0; i < movess.length; i++) {
+// //     movess[i].addEventListener('click', clickBox);
 // // }
 // //*****************************************************************************************
 // //*******************************************************************************************
@@ -185,24 +169,24 @@ function checkForWin() {
 // //
 // // //
 // // // document.addEventListener('DOMContentLoaded',() => {
-// // //     const squares = document.querySelectorAll('.container')
+// // //     const movess = document.querySelectorAll('.container')
 // // //
 // // //     let currentPlayer = 'playerX'
 // // //
-// // //     squares.forEach(squares => {
-// // //         squares.addEventListener('click', clickOutcome)
+// // //     movess.forEach(movess => {
+// // //         movess.addEventListener('click', clickOutcome)
 // // //     })
 // // //
 // // //     function clickoutcome(e) {
-// // //         const squareArray = Array.from(squares)
-// // //         const index = squareArray.indexof(e.target)
+// // //         const movesArray = Array.from(movess)
+// // //         const index = movesArray.indexof(e.target)
 // // //         console.log(index)
 // // //         playerDisplay.innerHTML = currentPlayer
 // // //     }
 // // // })
 // // //
 // // // if ( currentPlayer === 'playerX' ) {
-// // //    squares[index].classList.add()
+// // //    movess[index].classList.add()
 // // //     currentPlayer = 'playerO'
 // // // } else {
 // // //     currentPlayer = 'playerX'
