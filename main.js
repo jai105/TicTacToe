@@ -1,11 +1,9 @@
 
-
 const moves = [0,1,2,3,4,5,6,7,8];
 const playerStatus = document.querySelector("#player");
 const movess = document.querySelectorAll(".item");
-movess.forEach(moves => console.log(moves));
-console.log(movess);
-//const winMessageDiv = document.querySelector('.win-message')
+//movess.forEach(moves => console.log(moves));
+//console.log(movess);
 const board = document.querySelector('.container')
 let turnCount = 0
 let turn = 'X'
@@ -22,7 +20,6 @@ function checkForWin() {
     else if ((moves[6] === "X" && moves[7] === "X" && moves[8] === "X")||(moves[6] === "O" && moves[7] === "O" && moves[8] === "O")) {
         alert(turn + " Won the game!");
     }
-
     else if ((moves[0] === "X" && moves[3] === "X" && moves[6] === "X")||(moves[0] === "O" && moves[3] === "O" && moves[6] === "O")) {
         alert(turn + " Won the game!");
     }
@@ -38,13 +35,10 @@ function checkForWin() {
     else if ((moves[2] === "X" && moves[4] === "X" && moves[6] === "X")||(moves[2] === "O" && moves[4] === "O" && moves[6] === "O")) {
         alert(turn + " Won the game!");
     }
-
          else {
             console.log('no winner yet')
     }
 }
-
-
 
     function handleClickEventCallback(event) {
         if (turnCount < 1) {
@@ -66,6 +60,7 @@ function checkForWin() {
         moves.addEventListener('click', handleClickEventCallback, {once: true})
 
     })
+
 
 
 function clickCurrentPlayer(e) {
